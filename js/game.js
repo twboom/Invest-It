@@ -1,4 +1,7 @@
 class Game {
+
+    speed = 10;
+
     constructor(name, companyAmount, sectors) {
         this.name = name;
         this.companies = [];
@@ -21,4 +24,27 @@ class Game {
             this.companies.push(company);
         }
     }
+
+    tick() {
+        const currentNews = newsFlash();
+        
+        this.companies.forEach(company => company.tick(currentNews));
+
+        console.log(this.companies);
+    }
+
+    start() {
+        this.interval = setInterval(_ => this.tick(), this.speed);
+    }
+
+    stop() {
+        clearInterval(this.interval);
+    }
+
+    restart() {
+        this.stop();
+        this.start();
+    }
+
+
 }

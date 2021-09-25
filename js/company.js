@@ -7,16 +7,22 @@ class Company {
         this.value = 100;
     }
 
-    tick(news) {
-        const normalFluc = Math.round(this.character.stability * Math.random());
-        const riskFluc = Math.round(this.character.risk * Math.random());
-        let newsFluc = getNewsEffect(news, this);
-        newsFluc *= Math.round(this.character.publicRating * Math.random());
+    tick(currentNews) {
+        const normalFluc = this.character.stability * Math.random();
+        const riskFluc = this.character.risk * Math.random();
+        let newsFluc = getNewsEffect(currentNews, this);
+        newsFluc *= this.character.publicRating * Math.random();
 
         let fluctuation = normalFluc * riskFluc * newsFluc;
 
-        fluctuation *= this.character.stability;
+        
+
+        fluctuation += this.character.stability;
+
+        fluctuation += 0.5;
 
         this.value *= fluctuation;
+
+        console.log(normalFluc, riskFluc, newsFluc, fluctuation, this.value);
     }
 }

@@ -1,6 +1,6 @@
 // Get the effect of a news item
 function getNewsEffect(newsItem, company) {
-    let effectMultiplier = 0;
+    let effectMultiplier = 1;
     const random = Math.random();
 
     // If the news item is about a company
@@ -14,19 +14,20 @@ function getNewsEffect(newsItem, company) {
     }
 
     let effect = Math.round(effectMultiplier * newsItem.effect * random);
+    
     effect *= company.character.newsEffect;
 
-    return effect
+    return effect === -0 ? 1 : effect;
 };
 
 // Set missing charactaristics to default values
 function correctCharacteristics(character) {
     if (character === undefined) {character = {} };
-    if (character.risk === undefined) { character.risk = 0 };
-    if (character.environment === undefined) { character.environment = 0 };
-    if (character.publicRating === undefined) { character.publicRating = 0 };
+    if (character.risk === undefined) { character.risk = 1 };
+    if (character.environment === undefined) { character.environment = 1 };
+    if (character.publicRating === undefined) { character.publicRating = 1 };
     if (character.newsEffect === undefined) { character.newsEffect = 1 };
-    if (character.stability === undefined) { character.stability = 0 };
+    if (character.stability === undefined) { character.stability = 1 };
 
     return character;
 };

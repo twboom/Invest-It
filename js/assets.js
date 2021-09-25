@@ -64,6 +64,37 @@ const companyNames = {
     ],
 };
 
+const news = {
+    'ENVIROMENT': [
+        {
+            'title': 'Enviromental Crisis: Another oil leak!',
+            'description': 'Fuel company {} leaked oil into the ocean!',
+            'impact': 'NEGATIVE'
+        }
+    ],
+    'TECHNOLOGY': [
+        {
+            'title': 'New phone released!',
+            'description': 'New phone by {} released!',
+            'impact': 'POSITIVE'
+        }
+    ],
+    'FOOD': [
+        {
+            'title': 'New food product released!',
+            'description': 'New food product by {} released!',
+            'impact': 'POSITIVE'
+        }
+    ],
+    'ENTERTAINMENT': [
+        {
+            'title': 'New entertainment product released!',
+            'description': 'New entertainment product by {} released!',
+            'impact': 'POSITIVE'
+        }
+    ],
+}
+
 const sectors = [
     'FUELS',
     'RESTAURANTS',

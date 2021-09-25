@@ -17,4 +17,37 @@ function getNewsEffect(newsItem, company) {
     effect *= company.character.newsEffect;
 
     return effect
-}
+};
+
+// Set missing charactaristics to default values
+function correctCharacteristics(character) {
+    if (character === undefined) {character = {} };
+    if (character.risk === undefined) { character.risk = 0 };
+    if (character.environment === undefined) { character.environment = 0 };
+    if (character.publicRating === undefined) { character.publicRating = 0 };
+    if (character.newsEffect === undefined) { character.newsEffect = 1 };
+    if (character.stability === undefined) { character.stability = 0 };
+
+    return character;
+};
+
+// Correct sector to existing sectors
+function correctSectors(uncorrectedSectors) {
+    let correctedSectors = [];
+    
+    for (let sector of uncorrectedSectors) {
+        sector = sector.toUpperCase();
+        if (!sectors.includes(sector)) { continue };
+        correctedSectors.push(sector);
+    }
+
+    return correctedSectors
+};
+
+// Choose company name
+function chooseName(sector, companies) {
+    const sectorCompanies = companies.filter(company => company.sector === sector);
+    const usedNames = sectorCompanies.map(company => company.name);
+
+    return companyNames[sector][Math.floor(Math.random() * companyNames[sector].length)];
+};
